@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
+  name: coreapp
   labels:
-    app: hello
+    app: coreapp
 spec:
   selector:
     matchLabels:
-      app: webapp
+      app: coreapp
   replicas: 2
   template:
     metadata:
       labels:
-        app: webapp
+        app: coreapp
     spec:
       containers:
-      - name: webapp
+      - name: coreapp
         image: acrforaksdemo.azurecr.io/sandeepanumula92/coreapp
         resources:
           requests:
@@ -28,13 +28,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: coreapp-service
   labels:
-    app: webapp
+    app: coreapp
 spec:
   ports:
   - port: 80
     targetPort: dotnetapp-port
   selector:
-    app: webapp
+    app: coreapp
   type: LoadBalancer
