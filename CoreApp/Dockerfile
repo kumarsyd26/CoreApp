@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore:1.1
+FROM microsoft/aspnetcore-build:1.1 AS build-env
 WORKDIR /app
 COPY *.csproj ./
 RUN dotnet restore
